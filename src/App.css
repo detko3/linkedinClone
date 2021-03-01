@@ -7,4 +7,6 @@
 
 .appBody {
   display: flex;
+  flex: 1;
+  white-space: nowrap;
 }
