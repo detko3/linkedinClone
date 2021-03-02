@@ -1,5 +1,5 @@
 import { Avatar } from "@material-ui/core";
-import React from "react";
+import React, { forwardRef } from "react";
 import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined";
 import RedoOutlinedIcon from "@material-ui/icons/RedoOutlined";
@@ -8,11 +8,12 @@ import NearMeIcon from "@material-ui/icons/NearMe";
 import "./Post.css";
 import InputOption from "./InputOption";
 
-const Post = ({ name, description, message, imageUrl }) => {
+const Post = forwardRef(({ name, description, message, imageUrl }, ref) => {
   return (
-    <div className="post">
+    <div ref={ref} className="post">
       <div className="postHeader">
-        <Avatar />
+        {/* nemal by som generovat obrazok z props */}
+        <Avatar src={imageUrl}>{name[0]}</Avatar>
         <div className="postInfo">
           <h2>{name}</h2>
           <p>{description}</p>
@@ -31,6 +32,6 @@ const Post = ({ name, description, message, imageUrl }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Post;
